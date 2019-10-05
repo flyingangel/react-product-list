@@ -1,0 +1,7 @@
+@media print {
+    .MuiToolbar-root.MuiToolbar-regular,
+    th.MuiTableCell-root.MuiTableCell-head:last-child,
+    td.MuiTableCell-root.MuiTableCell-body:last-child {
+        display: none;
+    }
+}
