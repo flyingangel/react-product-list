@@ -9,23 +9,12 @@ const columns = [
     {
         title: 'Product name',
         field: 'name',
-        editComponent: (props) => {
-            console.log(props);
-            return <Autocomplete
+        editComponent: (props) =>
+            <Autocomplete
                 value={props.value}
                 onChange={(_, value) => props.onChange(value)}
-                onRowDataChange={props.onRowDataChange}
-                submit={() => {
-                    const rowData = props.rowData;
-
-                    rowData.totalPrice = rowData.quantity * rowData.price;
-
-                    const cloneData = [...this.state.data, rowData];
-
-                    this.setState({ data: cloneData });
-                }}
             />
-        },
+        ,
         headerStyle: {
             width: 400
         }
@@ -34,13 +23,13 @@ const columns = [
         title: 'Quantity',
         field: 'quantity',
         type: 'numeric',
-        initialEditValue: '1'
+        initialEditValue: 1
     },
     {
         title: 'Price per quantity',
         field: 'price',
         type: 'numeric',
-        initialEditValue: '0'
+        initialEditValue: 0
     },
     {
         title: 'Total product price',

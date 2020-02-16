@@ -5,6 +5,7 @@ import React, { PureComponent } from 'react';
 import Input from '@material-ui/core/Input';
 import styled from 'styled-components';
 import axios from 'axios';
+import HistoryIcon from '@material-ui/icons/History';
 
 const Root = styled.div`
     & ul {
@@ -23,6 +24,12 @@ const Root = styled.div`
 
             &:hover {
                 background: MintCream;
+            }
+
+            svg {
+                vertical-align: middle;
+                float: right;
+                color: LightGray
             }
         }
 
@@ -84,7 +91,7 @@ export default class Autocomplete extends PureComponent {
                         exist = true;
                     }
 
-                    item.label = item.name.replace(new RegExp(value, 'i'), `<strong>${value}</strong>`);
+                    item.label = item.name.replace(new RegExp(value, 'i'), `<mark>${value}</mark>`);
 
                     return item;
                 });
@@ -141,6 +148,7 @@ export default class Autocomplete extends PureComponent {
                     onChange={this.handleChange}
                     type="search"
                     id="name"
+                    placeholder="Product name"
                     value={value}
                     autoFocus
                 />
@@ -151,8 +159,10 @@ export default class Autocomplete extends PureComponent {
                             <li
                                 key={item.id}
                                 onClick={this.handleSuggestClick(item)}
-                                dangerouslySetInnerHTML={{ __html: item.label }}
-                            />
+                            >
+                                <label dangerouslySetInnerHTML={{ __html: item.label }} />
+                                <HistoryIcon />
+                            </li>
                         )}
 
                         {newItem &&
